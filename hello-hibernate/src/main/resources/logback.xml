@@ -49,6 +49,12 @@
         <Appender-ref ref="STDOUT"/>
     </logger>
 
+    <!-- 方法一：利用log打印sql, 跟控制台稍微不一样 -->
+    <logger name="org.hibernate.SQL" additivity="false" >
+        <level value="debug"/>
+        <Appender-ref ref="STDOUT"/>
+    </logger>
+
     <!-- 打印 sql 查询参数-->
     <logger name="org.hibernate.type.descriptor.sql.BasicBinder" additivity="false" >
         <level value="trace"/>
