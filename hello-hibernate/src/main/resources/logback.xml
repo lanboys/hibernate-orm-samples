@@ -44,7 +44,7 @@
          父 logger 的appender 一起打印，否则只打印自己的appender
     -->
 
-    <logger name="com.bing.lan.Main" additivity="false" >
+    <logger name="com.bing.lan" additivity="false" >
         <level value="trace"/>
         <Appender-ref ref="STDOUT"/>
     </logger>
@@ -70,6 +70,11 @@
         <level value="trace"/>
         <Appender-ref ref="STDOUT"/>
     </logger>
+
+    <!--<logger name="org.hibernate" additivity="false" >-->
+    <!--    <level value="debug"/>-->
+    <!--    <Appender-ref ref="STDOUT"/>-->
+    <!--</logger>-->
 
     <!--<logger name="org.hibernate.event.def.DefaultFlushEntityEventListener" additivity="false">-->
     <!--    <level value="trace"/>-->
