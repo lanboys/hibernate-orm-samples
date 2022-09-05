@@ -15,9 +15,10 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://142.18.46.103:10000/hibernate-xx?characterEncoding=UTF-8&amp;useUnicode=true</property>
+        <property
+            name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?characterEncoding=UTF-8&amp;useUnicode=true</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">KhWl40W@myqtrsqldb#180</property>
+        <property name="hibernate.connection.password">admin</property>
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="current_session_context_class">thread</property>
@@ -38,8 +39,10 @@
         <!-- 当连接池耗尽并接到获得连接的请求，则新增加连接的数量 --> 
         <property name="hibernate.c3p0.acquire_increment">2</property>  
         <!-- 是否验证，检查连接 --> 
-        <property name="hibernate.c3p0.validate">false</property>            
-         
+        <property name="hibernate.c3p0.validate">false</property>
+        <!-- 控制事务是否自动提交 默认是false -->
+        <property name="hibernate.connection.autocommit">true</property>
+
         <mapping resource="com/bing/lan/pojo/Product.hbm.xml" />
         <mapping resource="com/bing/lan/pojo/Category.hbm.xml" />
         <mapping resource="com/bing/lan/pojo/User.hbm.xml" />
