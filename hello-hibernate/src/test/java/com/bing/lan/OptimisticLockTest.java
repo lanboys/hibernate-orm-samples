@@ -117,12 +117,6 @@ public class OptimisticLockTest {
    * <property name="hibernate.connection.autocommit">true</property>
    * <p>
    * s1.doWork(new Work() {
-   *
-   *    @Override
-   *    public void execute(Connection connection) throws SQLException {
-   *        connection.setAutoCommit(true);
-   *    }
-   * });
    */
   @Test
   public void test3() {
@@ -218,6 +212,27 @@ public class OptimisticLockTest {
     s1.getTransaction().commit();
     s1.close();
 
+    sessionFactory.close();
+  }
+
+  @Test
+  public void test7() {
+    Session s1 = sessionFactory.openSession();
+    s1.beginTransaction();
+
+    // 不查询 直接更新
+    Product p2 = new Product();
+
+    p2.setVersion(22);
+    p2.setPrice(22);
+    p2.setName("name");
+    System.out.println("=========: " + p2);
+
+    s1.save(p2);// 会自动发送SQL, 无需flush, 貌似跟 update 不一样
+    s1.flush();
+
+    s1.getTransaction().commit();
+    s1.close();
     sessionFactory.close();
   }
 }
